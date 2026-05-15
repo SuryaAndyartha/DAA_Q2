@@ -20,6 +20,7 @@ class Courier:
         self.progress = 0.0
         self.returning = False
         self.return_timer = 0.0
+        self.delivered = False
 
     def dispatch(self, path, flavour): # from shop to customer
         if len(path) < 2:
@@ -32,12 +33,13 @@ class Courier:
         self.progress = 0.0
         self.returning = False
         self.return_timer = 0.0
-
+        
     def _start_return(self): # reverse method dispatch 
         self.path = self.path[::-1]
         self.step_idx = 0
         self.progress = 0.0
         self.returning = True
+        self.delivered = True
 
     def update(self, dt):
         if not self.active:
