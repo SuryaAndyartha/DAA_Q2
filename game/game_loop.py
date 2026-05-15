@@ -2,14 +2,18 @@ import pygame
 import sys
 
 import config.colors as colors
+
 from config.settings import W, H, FPS
-from config.map_data import FLAVOURS
 
 from rendering.city_renderer import draw_city, draw_shops, draw_path
+
 from rendering.hud_renderer import draw_hud, draw_game_over
 
 from game.game_state import GameState
+
 from game.input_handler import handle_input
+
+from config.map_data import FLAVOURS
 
 from systems.customer_spawner import spawn_customer
 
@@ -20,7 +24,7 @@ def run_game():
     )
 
     pygame.display.set_caption(
-        "Game Mengantar Kebutuhan Pelanggan"
+        "Courier Service Game"
     )
 
     font = pygame.font.SysFont(
@@ -62,20 +66,18 @@ def run_game():
             
             state.courier.update(dt)
 
-            if state.delivering and not state.courier.active:
+            if (state.delivering
+                and state.courier.delivered
+                and not state.courier.active
+            ):
                 state.delivering = False
                 state.active_path = []
 
+                state.customers = [
+                    c for c in state.customers
+                    if not c.waiting_courier
+                ]
                 state.customers.append(spawn_customer())
-
-            for note in state.notifications:
-                note["timer"] -= dt
-                note["y"] -= 40 * dt
-                note["alpha"] = int(max(0, (note["timer"] / 1.2) * 255))
-            
-            state.notifications = [
-                n for n in state.notifications if n["timer"] > 0
-            ]
 
         surf.fill(colors.C_BG)
 
@@ -93,11 +95,6 @@ def run_game():
             cust.update(dt)
 
         draw_hud(surf, font, state.score, state.time_left)
-
-        for note in state.notifications:
-            note_surf = font.render(note["text"], True, colors.C_RED)
-            note_surf.set_alpha(note["alpha"])
-            surf.blit(note_surf, note_surf.get_rect(center=(int(note["x"]), int(note["y"]))))
 
         if state.dragging_c:
             col = FLAVOURS[
