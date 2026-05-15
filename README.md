@@ -11,12 +11,15 @@ This is a python game using pygame to implement a Dijkstra Algorithm
 # How to Run
 
 ## On Windows
-using `python version 3.11` 
+Using `python version 3.11` 
 ```.py
 py -3.11 main.py
 ```
 
 ## On MacOS
+Using `python version 3.12`
 ```.py
 python3 main.py
 ```
+
+# Documentation
