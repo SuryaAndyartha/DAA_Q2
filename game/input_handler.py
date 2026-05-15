@@ -77,35 +77,25 @@ def handle_input(events, state):
                             )
 
                             state.active_path = path
-
                             state.last_path_flavour = (
                                 name
                             )
+                            state.dragging_c.on_order_dispatched()
                         
                         state.delivering = True
-
                         state.score += (
                             calculate_delivery_score(
                                 path
                             )
                         )
 
-                        state.dragging_c.done = True
-
-                        state.customers = [
-                            c
-                            for c
-                            in state.customers
-                            if not c.done
-                        ]
+                        state.dragging_c.on_order_dispatched()
 
                     else:
-                        state.score = max(0, state.score - wrong_shop_penalty())
-
-                        state.add_notification(
-                            "Toko Salah! -5",
-                            sx,
-                            sy
+                        state.score = max(
+                            0,
+                            state.score
+                            - wrong_shop_penalty()
                         )
 
                     break
