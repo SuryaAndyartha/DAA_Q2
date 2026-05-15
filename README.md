@@ -11,6 +11,7 @@ This is a python game using pygame to implement a Dijkstra Algorithm
 # How to Run
 
 ## On Windows
+using `python version 3.11` 
 ```.py
 py -3.11 main.py
 ```
