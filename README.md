@@ -2,11 +2,11 @@
 
 | Name | NRP | Class |
 | --- | --- | :---: |
-| Nyoman Surya Hutama Andyartha | 5025241093 | G |
 | Willy Dava Nugraha | 5025241090 | G |
+| Nyoman Surya Hutama Andyartha | 5025241093 | G |
 
 # Description
-This is a python game using pygame to implement a Dijkstra Algorithm
+This project involves a courier delivery game where the player is responsible for transporting orders from a store to a customer location. 
 
 # How to Run
 
