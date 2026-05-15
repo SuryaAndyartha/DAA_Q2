@@ -98,6 +98,12 @@ def handle_input(events, state):
                             - wrong_shop_penalty()
                         )
 
+                        state.add_notification(
+                            "Toko Salah! -5",
+                            sx,
+                            sy
+                        )
+
                     break
 
             state.dragging_c = None
