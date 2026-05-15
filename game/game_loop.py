@@ -79,6 +79,15 @@ def run_game():
                 ]
                 state.customers.append(spawn_customer())
 
+            for note in state.notifications:
+                note["timer"] -= dt
+                note["y"] -= 40 * dt
+                note["alpha"] = int(max(0, (note["timer"] / 1.2) * 255))
+            
+            state.notifications = [
+                n for n in state.notifications if n["timer"] > 0
+            ]
+
         surf.fill(colors.C_BG)
 
         draw_city(surf)
@@ -95,6 +104,11 @@ def run_game():
             cust.update(dt)
 
         draw_hud(surf, font, state.score, state.time_left)
+
+        for note in state.notifications:
+            note_surf = font.render(note["text"], True, colors.C_RED)
+            note_surf.set_alpha(note["alpha"])
+            surf.blit(note_surf, note_surf.get_rect(center=(int(note["x"]), int(note["y"]))))
 
         if state.dragging_c:
             col = FLAVOURS[
