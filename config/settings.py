@@ -1,0 +1,10 @@
+CELL = 40
+
+COLS = 27
+ROWS = 21
+
+W = COLS * CELL
+H = ROWS * CELL + 80
+
+FPS = 60
+GAME_DURATION = 90
