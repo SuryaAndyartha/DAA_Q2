@@ -15,14 +15,14 @@ If `pygame` was not installed in your device yet
 ```py
 py -3.11 -m pip install pygame
 ```
-Using `python version 3.11` 
-```.py
+Run using `python version 3.11` 
+```py
 py -3.11 main.py
 ```
 
 ## On MacOS
-Using `python version 3.12`
-```.py
+Run using `python version 3.12`
+```py
 python3 main.py
 ```
 
