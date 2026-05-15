@@ -14,3 +14,8 @@ This is a python game using pygame to implement a Dijkstra Algorithm
 ```.py
 py -3.11 main.py
 ```
+
+## On MacOS
+```.py
+python3 main.py
+```
