@@ -11,6 +11,10 @@ This project involves a courier delivery game where the player is responsible fo
 # How to Run
 
 ## On Windows
+If `pygame` was not installed in your device yet
+```py
+py -3.11 -m pip install pygame
+```
 Using `python version 3.11` 
 ```.py
 py -3.11 main.py
