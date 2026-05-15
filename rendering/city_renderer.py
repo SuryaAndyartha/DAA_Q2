@@ -1,8 +1,10 @@
 import pygame
 
 import config.colors as colors
+
 from config.settings import CELL, ROWS, COLS
-from config.map_data import ROAD_MAP, SHOP_POS, FLAVOURS
+
+from config.map_data import ROAD_MAP, SHOP_POS, FLAVOURS, FLAVOUR_EMOJI
 
 def draw_city(surf):
     for r in range(ROWS):
@@ -42,6 +44,10 @@ def draw_city(surf):
                     1
                 )
 
+def _draw_emoji(surf, emoji, cx, cy, size=18):
+    font = pygame.font.SysFont("segoeuiemoji,applesymbols,symbola,notocoloremoji", size)
+    text = font.render(emoji, True, (0, 0, 0))
+    surf.blit(text, text.get_rect(center=(cx, cy)))
 
 def draw_shops(surf, font_sm):
     for name, (sc, sr) in SHOP_POS.items():
@@ -121,6 +127,15 @@ def draw_shops(surf, font_sm):
                 y + 4
             ),
             6
+        )
+
+        emoji = FLAVOUR_EMOJI.get(name, "?")
+        _draw_emoji(
+            surf,
+            emoji,
+            x + CELL // 2,
+            y + CELL // 2 + 4,
+            size=14 # size emoji on shop
         )
 
 
